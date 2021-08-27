@@ -1,4 +1,4 @@
-const protocol = 'http';
+const protocol = 'https';
 const host = "3.135.244.200:8080";
 const hostUrl = `${protocol}://${host}/api/`;
 export const API = {
