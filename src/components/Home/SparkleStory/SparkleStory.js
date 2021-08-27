@@ -256,7 +256,7 @@ export default function SparkleStory() {
                                             type="text"
                                             name="lastname"
                                             id="lastname"
-                                            placeholder="Enter Your First Name"
+                                            placeholder="Enter Your Last Name"
                                             value={formValues?.lastname || ""}
                                             onChange={handleInputChange}
                                         />
