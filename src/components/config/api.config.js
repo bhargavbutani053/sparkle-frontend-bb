@@ -1,5 +1,5 @@
 const protocol = 'http';
-const host = "localhost:8080";
+const host = "3.135.244.200:8080";
 const hostUrl = `${protocol}://${host}/api/`;
 export const API = {
   protocol: protocol,
