@@ -1,0 +1,231 @@
+@import '../../../styles/mixins/typography.scss';
+@import '../../../styles/mixins/color.scss';
+@import '../../../styles/mixins/breakpoint.scss';
+
+.sparkle-gallery-banner {
+    background-color: $pink;
+    padding: 120px 0;
+    .gallery-img-align {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+        img {
+            height: 160px;
+            @include breakpoint("max-sm") {
+                height: 100px;
+            }
+        }
+    }
+    .box-grid {
+        display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        gap: 50px;
+        justify-content: space-between;
+        @include breakpoint("max-md") {
+            grid-template-columns: repeat(2 , 1fr);
+            gap: 30px;
+        }
+        @include breakpoint("max-sm") {
+            grid-template-columns: repeat(1 , 1fr);
+            gap: 20px;
+        }
+        .box-grid-items {
+            // background-color: $white;
+            img {
+                height: 400px;
+                object-fit: cover;
+                width: 100%;
+                @include breakpoint("max-md") {
+                    height: 300px;
+                }
+                @include breakpoint("max-sm") {
+                    height: 300px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    margin: 80px 0;
+    justify-content: center;
+    @include breakpoint("max-sm") {
+        margin: 30px 0;
+    }
+    .pagination-button {
+        width: 30px;
+        margin-right: 40px;
+        height: 30px;
+        background-color: #d04389;
+        border-radius: 50%;
+        .pagination-button:last-child {
+            margin-right: 0;
+        }
+    }
+    .pagination-active {
+        background-color: $white;
+    }
+}
+.share-story p {
+    color: $white;
+    @include heading-2;
+    font-weight: 400;
+    text-decoration: underline;
+    text-align: center;
+    cursor: pointer;
+    font-size: 30px;
+    @include breakpoint("max-sm") {
+        @include text-md;
+    }
+}
+.modal-text {
+    text-align: center;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.modal-body {
+    width: calc(100vw - 200px);
+    min-height: 700px;
+    background-color: #fff;
+    @include breakpoint("max-sm") {
+        width: calc(100vw - 56px);
+        height: auto;
+        min-height: auto;
+    }
+}
+.modal-grid {
+    display: grid;
+    grid-template-columns: minmax(0 , 1fr) 500px;
+    justify-content: space-between;
+    gap: 0 50px;
+    @include breakpoint("max-sm") {
+        grid-template-columns: repeat(1 , 1fr);
+    }
+    .modal-grid-items:nth-child(2) {
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+    .modal-grid-items {
+        .modal-main-img {
+            img {
+                height: 700px;
+            width: 100%;
+            object-fit: cover;
+            @include breakpoint("max-sm") {
+                height: 200px;
+            }
+            }
+        }
+        .modal-text-style {
+            padding-right: 3rem;
+            @include breakpoint("max-sm") {
+                padding: 0;
+            }
+            p {
+                margin-bottom: 2rem;
+                font-weight: 600 !important;
+                color: #593561;
+                @include text-md;
+            }
+
+        }
+    }
+}
+.close-icon-add {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    color: #d04389;
+    font-weight: bold;
+    @include breakpoint("max-sm") {
+        display: none;
+    }
+}
+
+// .next-btn {
+//     position: absolute;
+//     top: 25px;
+//     right: 25px;
+//     cursor: pointer;
+// }
+
+// .prev-btn {
+//     position: absolute;
+//     top: 25px;
+//     left: 25px;
+//     cursor: pointer;
+//  }
+
+
+.modal-relative {
+    position: relative;
+}
+
+.next-button-alignment-top {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 30px;
+        height: 30px;
+        @include breakpoint("max-sm") {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    @include breakpoint("max-sm") {
+        width: 40px;
+        height: 40px;
+    }
+}
+.next-button-alignment {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -60px;
+    img {
+        width: 30px;
+        height: 30px;
+        @include breakpoint("max-sm") {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @include breakpoint("max-sm") {
+        width: 40px;
+        height: 40px;
+        right: -35px;
+    }
+}

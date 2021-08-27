@@ -1,0 +1,59 @@
+.img-crop-div {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+
+    .img-cropper {
+        background-color: white;
+        display: grid;
+        place-items: center;
+        width: 90%;
+        height: 80vh;
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .crop-div-btns {
+        width: 90%;
+        height: 15vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 0 0 0.5rem 0.5rem;
+
+        button {
+            outline: none;
+            border: none;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+            &:hover,
+            &:focus {
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        .btn-crop {
+            background-color: #2196f3;
+            color: #e3f2fd;
+        }
+
+        .btn-cancel {
+            background-color: #e3f2fd;
+            color: #2196f3;
+        }
+    }
+}

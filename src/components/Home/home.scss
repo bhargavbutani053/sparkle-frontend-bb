@@ -1,0 +1,47 @@
+@import '../../styles/mixins/typography.scss';
+@import '../../styles/mixins/color.scss';
+@import '../../styles/mixins/breakpoint.scss';
+
+.home-banner {
+    background-image: url("../../Assets/Images/home-banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 145px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // min-height: calc(100vh - 132px);
+}
+.banner-text {
+    h1 {
+        color: $white;
+        @include heading-large;
+        text-align: center;
+        margin-bottom: 0;
+        @include breakpoint("max-sm") {
+            @include heading-1;
+            line-height: 60px;
+        }
+    }
+    p {
+        @include heading-2;
+        color: $white;
+        line-height: 46px;
+        font-weight: 400;
+        margin-bottom: 40px;
+        text-align: center;
+        @include breakpoint("max-sm") {
+            @include heading-4;
+        }
+    }
+    .text-img-align {
+        display: flex;
+        justify-content: center;
+        margin-top: -2rem;
+        margin-bottom: 40px;
+        @include breakpoint("max-sm") {
+            margin-top: 0rem;
+        }
+    }
+}

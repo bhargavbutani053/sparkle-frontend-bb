@@ -1,0 +1,291 @@
+@import "../../../styles/mixins/color.scss";
+@import "../../../styles/mixins/breakpoint.scss";
+@import "../../../styles/mixins/typography.scss";
+
+.sparkle-story-banner {
+    background-color: $green;
+    padding: 120px 0;
+    @include breakpoint("max-sm") {
+        padding: 80px 0;
+    }
+    .sparkle-text {
+        h1 {
+            @include heading-large;
+            text-align: center;
+            color: $white;
+            margin-bottom: 1.85rem;
+            @include breakpoint("max-sm") {
+                @include heading-2;
+            }
+        }
+        p {
+            @include heading-2;
+            color: $white;
+            line-height: 46px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            margin: 0;
+            text-align: center;
+            @include breakpoint("max-sm") {
+                @include text-md;
+            }
+        }
+    }
+    .grid {
+        display: grid;
+        margin-top: 120px;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0;
+        @include breakpoint("max-sm") {
+            margin-top: 60px;
+        }
+        .grid-items {
+            .form-box {
+                background-color: $white;
+                padding: 121px;
+                width: 100%;
+                border-radius: 50px;
+                @include breakpoint("max-md") {
+                    padding: 50px;
+                }
+                @include breakpoint("max-sm") {
+                    padding: 25px;
+                    border-radius: 6px;
+                }
+
+                .error-msg {
+                    height: 1rem;
+                    font-size: 0.85rem;
+                    margin-top: 0.25rem;
+                    color: #ff5252;
+                }
+
+                .required {
+                    color: #ff5252;
+                }
+
+                .form-grid-items-text-area {
+                    display: grid;
+                    margin-top: 2rem;
+                    grid-template-columns: repeat(1, 1fr);
+                    textarea {
+                        background-color: $dark;
+                        width: 100%;
+                        padding: 1rem 0.75rem;
+                        display: block;
+                        border: none;
+                        height: 230px;
+                        @include text-md;
+                        @include breakpoint("max-sm") {
+                            height: 80px;
+                            @include text-bold;
+                        }
+                        &:focus {
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                    label {
+                        display: block;
+                        @include heading-3;
+                        font-weight: 400;
+                        font-size: 22px;
+                        position: relative;
+                        margin: 0;
+                        margin-bottom: 15px;
+                        @include breakpoint("max-sm") {
+                            @include text-bold;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+                .form-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0 50px;
+                    justify-content: space-between;
+                    @include breakpoint("max-sm") {
+                        grid-template-columns: repeat(1 , 1fr);
+                    }
+
+                    &.margin-top {
+                        margin-top: 2rem;
+                    }
+                    .form-grid-items {
+                        label {
+                            display: block;
+                            @include heading-3;
+                            font-weight: 400;
+                            font-size: 22px;
+                            position: relative;
+                            margin: 0;
+                            margin-bottom: 15px;
+                            @include breakpoint("max-sm") {
+                                @include text-bold;
+                                margin-bottom: 10px;
+                            }
+                        } 
+                        input {
+                            background-color: $dark;
+                            height: 60px;
+                            width: 100%;
+                            padding: 0.375rem 0.75rem;
+                            display: block;
+                            border: none;
+                            @include text-md;
+                            @include breakpoint("max-sm") {
+                                height: 40px;
+                                @include text-bold;
+                            }
+                            &:focus {
+                                border: none;
+                                outline: none;
+                            }
+                        }
+                        select {
+                            background-color: $dark;
+                            height: 60px;
+                            width: 100%;
+                            padding: 0.375rem 0.75rem;
+                            display: block;
+                            border: none;
+                            @include text-md;
+                            @include breakpoint("max-sm") {
+                                height: 50px;
+                            }
+                            &:focus {
+                                border: none;
+                                outline: none;
+                            }
+                        }
+                        ::placeholder {
+                            color: #b2b2b2;
+                        }
+                    }
+                }
+                .darg-box-img {
+                    margin-top: 58px;
+                    border: 2px dashed #dadada;
+                    height: 100px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    @include breakpoint("max-sm") {
+                        margin-top: 20px;
+                    }
+                    p {
+                        color: $black;
+                        @include heading-4;
+                        font-size: 20px;
+                        text-align: center;
+                        font-weight: 400;
+                        @include breakpoint("max-sm") {
+                            @include text;
+                        }
+                    }
+                    span {
+                        font-weight: 600;
+                    }
+                    .file-input {
+                        display: none;
+                    }
+                    .file-name {
+                        margin-top: 0.25rem;
+                        display: block;
+                        font-size: 0.85rem;
+                    }
+                }
+                .terms-conditions {
+                    margin-bottom: 40px;
+                    margin-top: 2rem;
+                    text-align: center;
+
+                    div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        input[type="checkbox"] {
+                            width: 30px;
+                            height: 30px;
+                            border: 1px solid $black;
+                            @include breakpoint("max-sm") {
+                                width: 60px;
+                                height: 60px;   
+                            }
+                        }
+                        label {
+                            @include text-md;
+                            font-size: 20px;
+                            padding-left: 1.25rem;
+                            @include breakpoint("max-sm") {
+                                @include text-sm;
+                            }
+                        }
+                        span {
+                            font-weight: 500;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                .submit-button {
+                    display: flex;
+                    justify-content: center;
+                    button {
+                        padding: 8px 15px;
+                        background-color: $blue;
+                        @include heading-3;
+                        color: $white;
+                        min-width: 250px;
+                        height: 70px;
+                        border: none;
+                        border-radius: 999px;
+                        @include breakpoint("max-sm") {
+                            height: 50px;
+                            @include text-md;
+                            font-weight: 600gallery-img-align;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.final-register-box {
+    background-color: #fff;
+    padding: 360px 121px 360px 121px;
+    width: 100%;
+    border-radius: 50px;
+    .text-style {
+        h1 {
+            @include heading-large;
+            color: #00BCDF;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+        p {
+            @include heading-3;
+            font-weight: 400;
+            margin-bottom: 80px;
+            text-align: center;
+            color: #000000;
+        }
+        h6 {
+            @include heading-3;
+            text-decoration: underline;
+            color: #000;
+            text-decoration-skip: unset;
+            text-align: center;
+            font-weight: 400;
+            cursor: pointer;
+            transition: .3s;
+            &:hover {
+                transform: translate(0 , -3px);
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import '../../../styles/mixins/typography.scss';
+@import '../../../styles/mixins/color.scss';
+@import '../../../styles/mixins/breakpoint.scss';
+
+footer {
+    background-color: $dark-black;
+    padding: 120px 0 40px 0;
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 210px 210px 210px;
+        gap: 60px;
+        @include breakpoint("max-md") {
+            grid-template-columns: 180px 180px 180px;
+        }
+        @include breakpoint("max-sm") {
+            grid-template-columns: repeat(1 , 1fr);
+        }
+        .footer-grid-items {
+            nav {
+                ul {
+                    list-style: none;
+                    li {
+                        @include text-md;
+                        color: $white;
+                        text-decoration: none;
+                        padding-bottom: .8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+.footer-child-text {
+    padding-top: 3rem;
+    p {
+        @include text-md;
+        color: $white;
+    }
+    span {
+        font-weight: 600;
+    }
+    a {
+        text-decoration: underline;
+    }
+}

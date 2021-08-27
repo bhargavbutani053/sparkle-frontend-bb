@@ -1,0 +1,111 @@
+@import '../../../styles/mixins/breakpoint.scss';
+@import '../../../styles/mixins/color.scss';
+@import '../../../styles/mixins/typography.scss';
+
+
+.mini-header {
+    background-color: $light;
+    padding: .8rem 0;
+    .language-alignment {
+        p {
+            color: $primary;
+            @include text-sm-bold;
+        }
+        span {
+            opacity: .5;
+        }
+    }
+    .buy-now-button {
+        padding-left: 32px;
+        button {
+            font-size: 12px;
+            color: $white;
+            border: 1px solid transparent;
+            width: 71px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 26px;
+            background-color: $primary;
+            transition: .3s;
+            cursor: pointer;
+            &:hover {
+                border: 1px solid $primary;
+                background-color: transparent;
+                color: $primary;
+            }
+        }
+    }
+    .mini-header-alignment {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: .8rem 0;
+    .header-alignment {
+        display: flex;
+        justify-content: center;
+        .company_logo {
+            position: absolute;
+            top: 18px;
+            left: 25px;
+            img {
+                width: 76px;
+                height: 50px;
+                object-fit: cover;
+            }
+        }
+        .sub-menu {
+            @include breakpoint("max-md") {
+                display: none;
+            }
+            @include breakpoint("max-sm") {
+                display: none;
+            }
+            nav {
+                ul {
+                 
+                    display: flex;
+                    list-style: none;
+                    li {
+                        text-decoration: none;
+                        position: relative;
+                        margin: 0 1rem;
+                        color: $primary;
+                        @include text;
+                        cursor: pointer;
+                        font-weight: 500;
+                        li:last-child {
+                            padding-right: 0;
+                        }
+                    }
+                    li:after {
+                        content: "";
+                        position: absolute;
+                        height: 2px;
+                        width: 100%;
+                        bottom: -8px;
+                        left: 0;
+                        background-color: $primary;
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        opacity: 0;
+                        transition: transform .3s ease-out,opacity .3s ease-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
+header .header-alignment .sub-menu nav ul li:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
