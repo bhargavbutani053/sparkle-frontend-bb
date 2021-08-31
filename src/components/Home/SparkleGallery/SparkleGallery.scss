@@ -4,13 +4,13 @@
 
 .sparkle-gallery-banner {
     background-color: $pink;
-    padding: 120px 0;
+    padding: 60px 0;
     .gallery-img-align {
         display: flex;
         justify-content: center;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         img {
-            height: 160px;
+            height: 100px;
             @include breakpoint("max-sm") {
                 height: 100px;
             }
@@ -19,7 +19,7 @@
     .box-grid {
         display: grid;
         grid-template-columns: repeat(3 , 1fr);
-        gap: 50px;
+        gap: 20px;
         justify-content: space-between;
         @include breakpoint("max-md") {
             grid-template-columns: repeat(2 , 1fr);
@@ -32,7 +32,7 @@
         .box-grid-items {
             // background-color: $white;
             img {
-                height: 400px;
+                height: 300px;
                 object-fit: cover;
                 width: 100%;
                 @include breakpoint("max-md") {
@@ -99,7 +99,7 @@
 }
 
 .modal-body {
-    width: calc(100vw - 200px);
+    width: calc(100vw - 400px);
     min-height: 700px;
     background-color: #fff;
     @include breakpoint("max-sm") {

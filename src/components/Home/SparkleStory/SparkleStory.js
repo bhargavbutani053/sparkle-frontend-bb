@@ -194,6 +194,12 @@ export default function SparkleStory() {
         return res?.data;
     }
 
+    const maxLengthCheck = (e) => {
+        if (e.target.value.length > e.target.maxLength) {
+            e.target.value = e.target.value.slice(0, e.target.maxLength)
+        }
+    }
+
     return (
         <>
             {loading &&
@@ -207,10 +213,11 @@ export default function SparkleStory() {
                     <div className="img-cropper">
                         <Cropper
                             src={cropImage}
-                            style={{ maxWidth: "90%", maxHeight: "90%" }}
+                            style={{ maxWidth: "90%", maxHeight: "90vh" }}
                             onInitialized={(instance) => {
                                 setCropper(instance);
                             }}
+                            aspectRatio={1 / 1}
                         />
                     </div>
 
@@ -242,6 +249,8 @@ export default function SparkleStory() {
                                             placeholder="Enter Your First Name"
                                             value={formValues?.firstname || ""}
                                             onChange={handleInputChange}
+                                            maxLength="30"
+                                            onInput={(e) => maxLengthCheck(e)}
                                         />
                                         <p className="error-msg">
                                             {formError?.firstname
@@ -256,9 +265,11 @@ export default function SparkleStory() {
                                             type="text"
                                             name="lastname"
                                             id="lastname"
-                                            placeholder="Enter Your Last Name"
+                                            placeholder="Enter Your First Name"
                                             value={formValues?.lastname || ""}
                                             onChange={handleInputChange}
+                                            maxLength="30"
+                                            onInput={(e) => maxLengthCheck(e)}
                                         />
                                         <p className="error-msg">
                                             {formError?.lastname
@@ -299,6 +310,8 @@ export default function SparkleStory() {
                                         cols="50"
                                         value={formValues?.story || ""}
                                         onChange={handleInputChange}
+                                        maxLength="400"
+                                        onInput={(e) => maxLengthCheck(e)}
                                     ></textarea>
                                     <p className="error-msg">
                                         {formError?.story
@@ -315,7 +328,6 @@ export default function SparkleStory() {
                                 >
                                     <p>Drag and drop file here or
                                         <span> browse</span> from computer
-                                        <span className="required">*</span>
                                         <span className="file-name">{storyFile?.name}</span>
                                         <input
                                             type="file"
@@ -342,7 +354,8 @@ export default function SparkleStory() {
                                             checked={tnCCheck}
                                             onChange={handleTnC}
                                         />
-                                        <label htmlFor="tnc">I agree to <span>Terms & Conditions,</span> and acknowledge that by submitting my photo/video that I release its use in the Sparkle Story.</label>
+                                        <label htmlFor="tnc">Please indicate that you have read and <span>agree to the Terms and Conditions.</span></label>
+                                        {/* <label htmlFor="tnc">I agree to <span>Terms & Conditions,</span> and acknowledge that by submitting my photo/video that I release its use in the Sparkle Story.</label> */}
                                     </div>
                                     <p className="error-msg">
                                         {formError?.tnc

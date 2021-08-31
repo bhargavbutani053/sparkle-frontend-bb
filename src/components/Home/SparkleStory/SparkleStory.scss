@@ -289,3 +289,30 @@
         }
     }
 }
+
+@media (min-width:900px) and (max-width:1440px) {
+    .sparkle-story-banner .sparkle-text h1 {
+        @include heading-1;
+        br {
+            display: none;
+        }
+    }
+    .sparkle-story-banner {
+        padding: 40px 0;
+    }
+    .sparkle-story-banner .grid {
+        margin-top: 40px;
+    }
+    .sparkle-story-banner .grid .grid-items .form-box {
+        padding: 50px;
+    }
+    .sparkle-story-banner .grid .grid-items .form-box .darg-box-img {
+        margin-top: 30px;
+    }
+    .sparkle-story-banner .grid .grid-items .form-box .form-grid.margin-top {
+        margin-top: 0;
+    }
+    .sparkle-story-banner .sparkle-text h1 {
+        margin-bottom: 10px;
+    }
+}
