@@ -62,7 +62,10 @@ export default function SparkleGallery() {
                            
                             <div className="modal-grid-items">
                                 <div className="modal-main-img">
-                                    <img src={images[curIndex]?.image} alt="ModalImages"/>
+                                    {
+                                        images && images[curIndex]?.image.includes(".png" || ".jpg" || ".jpeg") ?  <img src={images[curIndex]?.image} alt="ModalImages"/> : <video src={images[curIndex]?.image} alt="ModalVideo"controls />
+                                    }
+                                    
                                 </div>
                             </div>
                           
@@ -94,7 +97,9 @@ export default function SparkleGallery() {
                             images && images?.map((rec, index) => {
                                 return (
                                     <div key={index} className="box-grid-items" onClick={() => handleModalOpen(index)}>
-                                        <img src={rec?.image} />
+                                        {
+                                            rec.image.includes(".png" || ".jpg" || ".jpeg") ?  <img src={rec.image} alt="ModalImages"/> : <video src={rec.image} alt="`ModalVideo" />
+                                        }
                                     </div>
                                 )
                             })
