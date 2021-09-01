@@ -15,13 +15,13 @@ export default function Home() {
                             <img src={TextImage} alt="TextImage"/>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis neque 
-                            at orci vestibulum vehicula et ac elit. Vivamus velit nibh, ornare id urna id, interdum volutpat eros.
+                        And win a year’s supply <br/>
+of Sparkling Ice!
                         </p>
-                        <p>
-                            Donec varius quam elit, aliquam efficitur libero hendrerit non. Vestibulum ante ipsum primis 
-                            in faucibus orci luctus et ultrices posuere cubilia curae; Donec rhoncus erat at lorem.
-                        </p>
+                        <span>
+                        Why do you love Sparkling Ice? Has it helped you lose weight, helped kick your soda habit, or do you just love how it tastes and makes you feel? There are a million reasons to love Sparkling Ice and we want to hear your story of 
+                        </span>
+                        <span>how Sparkling Ice makes you sparkle brighter</span>
                     </div>
                 </div>
             </div>

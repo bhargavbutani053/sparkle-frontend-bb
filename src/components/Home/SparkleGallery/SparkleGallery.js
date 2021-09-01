@@ -193,7 +193,7 @@ export default function SparkleGallery() {
           <div className="pagination">
             {(() => {
               let pages = [];
-              for (let i = 1; i <= len && i <= 5; i++) {
+              for (let i = 1; i <= len && i <= 6; i++) {
                 pages.push(
                   <div
                     className={`pagination-button ${

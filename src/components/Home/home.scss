@@ -28,12 +28,19 @@
         @include heading-2;
         color: $white;
         line-height: 46px;
-        font-weight: 400;
+        font-weight: 600;
         margin-bottom: 40px;
         text-align: center;
         @include breakpoint("max-sm") {
             @include heading-4;
         }
+    }
+    span {
+        @include heading-3;
+        color: $white;
+        font-weight: 400;
+        text-align: center;
+        display: block;
     }
     .text-img-align {
         display: flex;
