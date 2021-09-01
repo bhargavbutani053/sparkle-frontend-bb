@@ -123,6 +123,9 @@ export default function SparkleGallery() {
             <div className="modal-body" ref={wrapperRef}>
               <div className="modal-grid">
                 <div className="modal-grid-items">
+                    <div className="mobile-view-close" onClick={() => handleModalClose()}>
+                        <span>X</span>
+                    </div>
                   <div className="modal-main-img">
                     {images &&
                     images[curIndex]?.image.includes(
@@ -204,7 +207,9 @@ export default function SparkleGallery() {
             })()}
           </div>
           <div className="share-story">
+              <a href="#formBar">
             <p>Share Your Sparkle Story</p>
+            </a>
           </div>
         </div>
       </div>

@@ -31,6 +31,17 @@ export default function SparkleStory() {
         })
     }
 
+    function validateSize(file) {
+      const fileSize = file.size / 1024 / 1024; // in MiB
+      if (fileSize > 25) {
+          console.log("in if", fileSize)
+          return false;
+        } else {
+          console.log("in else", fileSize)
+        return true;
+      }
+    }
+
     const handleFileUpload = (e) => {
         e.preventDefault()
         let file = e.target?.files
@@ -53,10 +64,19 @@ export default function SparkleStory() {
             setIsCropDiv(true)
 
         } else if (file?.type?.includes("video")) {
-            setStoryFile(file)
-            setFormError((prevValue) => {
-                return { ...prevValue, storyFile: "" }
-            })
+            console.log("fileeee", file)
+            if(validateSize(file)){
+                setStoryFile(file)
+                setFormError((prevValue) => {
+                    return { ...prevValue, storyFile: "" }
+                })
+            } else {
+                toast.error("Video size should be less than 25MB");
+                setFormError((prevValue) => {
+                    return { ...prevValue, storyFile: "Video size should be less than 25MB" }
+                })
+            }
+
         } else {
             setFormError((prevValue) => {
                 return { ...prevValue, storyFile: "Please Upload Only Image or Video File" }
@@ -88,6 +108,8 @@ export default function SparkleStory() {
             return { ...prevValue, tnc: "" }
         })
     }
+
+  
 
     const isFormValid = () => {
         let isValid = true
@@ -153,6 +175,8 @@ export default function SparkleStory() {
         }
         return isValid
     }
+
+    
 
     const handleStoryFormSubmit = (e) => {
         e.preventDefault()
@@ -232,7 +256,7 @@ export default function SparkleStory() {
                 </div>
             }
 
-            <div className="sparkle-story-banner">
+            <div className="sparkle-story-banner" id="formBar">
                 <div className="container">
                     <div className="sparkle-text">
                         <h1>TELL US YOUR<br /> SPARKLE STORY</h1>

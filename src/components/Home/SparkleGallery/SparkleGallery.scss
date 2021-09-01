@@ -109,6 +109,7 @@
         width: calc(100vw - 56px);
         height: auto;
         min-height: auto;
+        overflow: scroll;
     }
 }
 .modal-grid {
@@ -143,13 +144,16 @@
         .modal-text-style {
             padding-right: 3rem;
             @include breakpoint("max-sm") {
-                padding: 0;
+                padding: 15px;
             }
             p {
                 margin-bottom: 2rem;
                 font-weight: 600 !important;
                 color: #593561;
                 @include text-md;
+                @include breakpoint("max-sm") {
+                    @include text;
+                }
             }
 
         }
@@ -235,5 +239,17 @@
         width: 40px;
         height: 40px;
         right: -35px;
+    }
+}
+
+.mobile-view-close {
+    position: fixed;
+    right: 40px;
+    display: none;
+    font-weight: bold;
+    margin-top: 5px;
+    @include breakpoint("max-sm") {
+        display: block;
+
     }
 }
