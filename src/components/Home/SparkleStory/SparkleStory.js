@@ -93,15 +93,19 @@ export default function SparkleStory() {
         let isValid = true
         // eslint-disable-next-line
         const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        if (!formValues?.firstname || formValues?.firstname === "") {
+
+        // generate regex for not accept only numeric, only symbols or only spaces
+        const nameRegx = /^[a-zA-Z]{2,30}$/
+
+        if (!formValues?.firstname || formValues?.firstname === "" || !nameRegx.test(formValues?.firstname)) {
             setFormError((prevValue) => {
-                return { ...prevValue, firstname: "Please Enter First Name" }
+                return { ...prevValue, firstname: "Please Enter Your First Name Properly" }
             })
             isValid = false
         }
-        if (!formValues?.lastname || formValues?.lastname === "") {
+        if (!formValues?.lastname || formValues?.lastname === "" || !nameRegx.test(formValues?.lastname)) {
             setFormError((prevValue) => {
-                return { ...prevValue, lastname: "Please Enter Last Name" }
+                return { ...prevValue, lastname: "Please Enter Your Last Name Properly" }
             })
             isValid = false
         }
@@ -213,7 +217,7 @@ export default function SparkleStory() {
                     <div className="img-cropper">
                         <Cropper
                             src={cropImage}
-                            style={{ maxWidth: "90%", maxHeight: "90vh" }}
+                            style={{ maxWidth: "90%", maxHeight: "75vh" }}
                             onInitialized={(instance) => {
                                 setCropper(instance);
                             }}
