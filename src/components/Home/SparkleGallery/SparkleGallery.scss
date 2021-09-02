@@ -63,6 +63,11 @@
         height: 30px;
         background-color: #d04389;
         border-radius: 50%;
+        @include breakpoint("max-sm") {
+            width: 20px;
+            height: 20px;
+            margin-right: 20px;
+        }
         .pagination-button:last-child {
             margin-right: 0;
         }
@@ -103,7 +108,7 @@
 
 .modal-body {
     width: 100%;
-    // min-height: 700px;
+    height: 700px;
     background-color: #fff;
     @include breakpoint("max-sm") {
         width: calc(100vw - 56px);
@@ -118,19 +123,22 @@
     min-height: 250px;
     max-height: 600px;
     justify-content: space-between;
-    gap: 0 50px;
+    gap: 0 0px;
     @include breakpoint("max-sm") {
         grid-template-columns: repeat(1 , 1fr);
     }
     .modal-grid-items:nth-child(2) {
-        display: flex;
+    
         position: relative;
-        align-items: center;
+        padding:30px 100px ;
+        @include breakpoint("max-sm") {
+            padding: 15px;
+        }
     }
     .modal-grid-items {
         .modal-main-img {
             img {
-            height: 600px;
+            height: 700px;
             width: 100%;
             object-fit: cover;
             @include breakpoint("max-sm") {

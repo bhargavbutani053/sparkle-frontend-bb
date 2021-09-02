@@ -206,6 +206,9 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        @include breakpoint("max-sm") {
+                            align-items: inherit;
+                        }
 
                         input[type="checkbox"] {
                             width: 30px;
@@ -223,6 +226,14 @@
                             @include breakpoint("max-sm") {
                                 @include text-sm;
                             }
+                        }
+                        p {
+                           @include breakpoint("max-sm") {
+                            @include text-sm;
+                            font-size: 12px;
+                            text-align: left;
+                            padding-left: .5rem;
+                           }
                         }
                         span {
                             font-weight: 500;
@@ -315,4 +326,19 @@
     .sparkle-story-banner .sparkle-text h1 {
         margin-bottom: 10px;
     }
+}
+
+
+.terams{
+    cursor: pointer;
+}
+
+
+.tncterms{
+    font-size: 21px;
+}
+
+
+.checkbox{
+    margin-bottom:auto;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SparkleGallery.scss";
 import GalleryText from "../../../Assets/Images/gallery-text.png";
+import GalleryPurple from "../../../Assets/Images/gallery-story-logo-purple.png";
 import ModalImages from "../../../Assets/Images/modal-img.png";
 import { ApiGet } from "../../Helpers/Api/ApiData";
 import { useRef } from "react";
@@ -123,9 +124,12 @@ export default function SparkleGallery() {
             <div className="modal-body" ref={wrapperRef}>
               <div className="modal-grid">
                 <div className="modal-grid-items">
-                    <div className="mobile-view-close" onClick={() => handleModalClose()}>
-                        <span>X</span>
-                    </div>
+                  <div
+                    className="mobile-view-close"
+                    onClick={() => handleModalClose()}
+                  >
+                    <span>X</span>
+                  </div>
                   <div className="modal-main-img">
                     {images &&
                     images[curIndex]?.image.includes(
@@ -149,7 +153,10 @@ export default function SparkleGallery() {
                   >
                     <p>X</p>
                   </div>
+                    
+             
                   <div className="modal-text-style">
+                    <img src={GalleryPurple} alt="GalleryText" />
                     <p>{images[curIndex]?.story}</p>
                     <p>
                       {images[curIndex]?.firstname +
@@ -180,16 +187,26 @@ export default function SparkleGallery() {
                     onMouseOut={() => handleOut()}
                   >
                     {rec.image.includes(".png" || ".jpg" || ".jpeg") ? (
-                      <img data-tip={initials} data-for="foo" src={rec.image} alt="ModalImages" />
+                      <img
+                        data-tip={initials}
+                        data-for="foo"
+                        src={rec.image}
+                        alt="ModalImages"
+                      />
                     ) : (
-                      <video data-tip={initials} data-for="foo" src={rec.image} alt="ModalVideo" />
+                      <video
+                        data-tip={initials}
+                        data-for="foo"
+                        src={rec.image}
+                        alt="ModalVideo"
+                      />
                     )}
                   </div>
                 );
               })}
           </div>
           {/* <p data-tip={initials}>hi</p> */}
-            <ReactTooltip id="foo"/>
+          <ReactTooltip id="foo" />
           <div className="pagination">
             {(() => {
               let pages = [];
@@ -207,8 +224,8 @@ export default function SparkleGallery() {
             })()}
           </div>
           <div className="share-story">
-              <a href="#formBar">
-            <p>Share Your Sparkle Story</p>
+            <a href="#formBar">
+              <p>Share Your Sparkle Story</p>
             </a>
           </div>
         </div>

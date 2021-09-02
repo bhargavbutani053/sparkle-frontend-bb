@@ -12,6 +12,10 @@
     align-items: center;
     justify-content: center;
     // min-height: calc(100vh - 132px);
+    @include breakpoint("max-sm") {
+        height: auto;
+        padding: 80px 0;
+    }
 }
 .banner-text {
     h1 {

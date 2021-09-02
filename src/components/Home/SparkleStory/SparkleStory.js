@@ -5,8 +5,59 @@ import './SparkleStory.scss';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import './SparkleStoryImageCropper.scss';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Typography from '@material-ui/core/Typography';
 
 
+
+const styles = (theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(2),
+    },
+    closeButton: {
+      position: 'absolute',
+      right: theme.spacing(1),
+      top: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+  });
+
+
+
+  const DialogTitle = withStyles(styles)((props) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h6">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  });
+  
+  const DialogContent = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(2),
+    },
+  }))(MuiDialogContent);
+  
+  const DialogActions = withStyles((theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(1),
+    },
+  }))(MuiDialogActions);
 export default function SparkleStory() {
 
     const [loading, setLoading] = useState(false)
@@ -20,6 +71,17 @@ export default function SparkleStory() {
     const [cropper, setCropper] = useState();
     const [cropImage, setCropImage] = useState();
     const [showForm, setShowForm] = useState(true)
+
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+    const handleClose = () => {
+      setOpen(false);
+    };
+  
 
 
     const handleInputChange = (e) => {
@@ -103,10 +165,12 @@ export default function SparkleStory() {
     }
 
     const handleTnC = (e) => {
+       
         setTnCCheck(e.target.checked)
         setFormError((prevValue) => {
             return { ...prevValue, tnc: "" }
         })
+        //  setOpen(false);
     }
 
   
@@ -376,14 +440,17 @@ export default function SparkleStory() {
                                 <div className="terms-conditions">
                                     <div>
                                         <input
+                                            className="checkbox"
                                             type="checkbox"
                                             id="tnc"
                                             name="tnc"
                                             checked={tnCCheck}
                                             onChange={handleTnC}
+                                           
+                                           
                                         />
-                                        <label htmlFor="tnc">Please indicate that you have read and <span>agree to the Terms and Conditions.</span></label>
-                                        {/* <label htmlFor="tnc">I agree to <span>Terms & Conditions,</span> and acknowledge that by submitting my photo/video that I release its use in the Sparkle Story.</label> */}
+                                        {/* <label htmlFor="tnc" onClick={handleClickOpen}>Please indicate that you have read and <span onClick={handleClickOpen}>agree to the Terms and Conditions.</span></label> */}
+                                        <p className="tncterms" htmlFor="tnc">I agree to <span onClick={handleClickOpen} className="terams">Terms & Conditions,</span> and acknowledge that by submitting my photo/video that I release its use in the Sparkle Story.</p>
                                     </div>
                                     <p className="error-msg">
                                         {formError?.tnc
@@ -415,6 +482,43 @@ export default function SparkleStory() {
                     </div>
                 </div>
             </div>
+
+
+
+            <div>
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Open dialog
+      </Button> */}
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+        Terms & Conditions
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+          Except where prohibited by law, by submitting your “Sparkle Story” you grant to Talking Rain Beverage Company, 
+          Inc. website administrator, and all of their respective partners, parent companies, divisions, subsidiaries, affiliates, trustees, franchisees, licensees, distributors, prize providers, advertising, promotion,
+           and public relations agencies and those acting pursuant to Talking Rain and administrator’s authority, the right and permission to print, publish, 
+           
+          </Typography>
+          <Typography gutterBottom>
+          broadcast, and use, worldwide, in any media now known or hereafter developed,
+            including but not limited to the world wide web, at any time or times, your Sparkle Story,
+             in whole or in part, the name or personal identifying information you provide with your submission, 
+            
+          </Typography>
+          <Typography gutterBottom>
+          which may include pictures, voice, likeness, and biographical information (the “Submission”) for advertising, trade, and promotional purposes without consideration, compensation, permission, or further notification.
+              You agree that Talking Rain shall own the Submission, which will not be acknowledged or returned, and that Talking Rain and its designees shall have the perpetual, 
+              worldwide right to edit, publish, and use the Submission in any way and in any media for trade, advertising, promotional, and/or other purposes as Talking Rain and/or its designees may determine. 
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+            {/* <Button autoFocus onClick={handleClose} color="primary">
+                Agree
+            </Button> */}
+        </DialogActions>
+      </Dialog>
+    </div>
         </>
     )
 }
