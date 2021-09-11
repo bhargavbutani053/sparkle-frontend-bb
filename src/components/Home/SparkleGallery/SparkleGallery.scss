@@ -3,7 +3,7 @@
 @import '../../../styles/mixins/breakpoint.scss';
 
 .sparkle-gallery-banner {
-    background-color: $pink;
+    background-color: #662e67;
     padding: 60px 0;
     .gallery-img-align {
         display: flex;
@@ -31,8 +31,10 @@
         }
         .box-grid-items {
             // background-color: $white;
+            position: relative;
+            overflow: hidden;
             img {
-                height: 300px;
+                height: 400px;
                 object-fit: cover;
                 width: 100%;
                 @include breakpoint("max-md") {
@@ -45,6 +47,8 @@
             }
             video {
                 width: 100%;
+                height: 400px;
+                object-fit: cover;
             }
         }
     }
@@ -93,6 +97,21 @@
 }
 
 .modal {
+    width: 75%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    z-index: 9999999;
+    left: 50%;
+    transform: translateX(-50%);
+    // background-color: rgba(0,0,0,0.3);
+}
+.modal-video {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -117,6 +136,17 @@
         overflow: scroll;
     }
 }
+.modal-body-video {
+    width: 72%;
+    height: 500px;
+    background-color: #fff;
+    @include breakpoint("max-sm") {
+        width: calc(100vw - 56px);
+        height: auto;
+        min-height: auto;
+        overflow: scroll;
+    }
+}
 .modal-grid {
     display: grid;
     grid-template-columns: minmax(0 , 1fr) 500px;
@@ -130,31 +160,38 @@
     .modal-grid-items:nth-child(2) {
     
         position: relative;
-        padding:30px 100px ;
+        padding: 30px 40px 30px 70px;
         @include breakpoint("max-sm") {
             padding: 15px;
         }
     }
     .modal-grid-items {
         .modal-main-img {
+            display: flex;
+            align-items: center;
+            height: 700px;
+            background-color: #000;
             img {
             height: 700px;
             width: 100%;
             object-fit: cover;
             @include breakpoint("max-sm") {
-                height: 200px;
+                height: 280px;
             }
             }
             video {
                 width: 100%;
+                height: 533px;
+                object-fit: cover;
             }
         }
         .modal-text-style {
-            padding-right: 3rem;
+            // padding-right: 3rem;
             @include breakpoint("max-sm") {
                 padding: 15px;
             }
             p {
+                word-break: break-all;
                 margin-bottom: 2rem;
                 font-weight: 600 !important;
                 color: #593561;
@@ -202,16 +239,14 @@
     position: absolute;
     top: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
-    background-color:#fff;
     display: flex;
     align-items: center;
+    left: -45px;
     justify-content: center;
     img {
-        width: 30px;
-        height: 30px;
+        width: 45px;
+        height: 45px;
         @include breakpoint("max-sm") {
             width: 20px;
             height: 20px;
@@ -226,17 +261,14 @@
     position: absolute;
     top: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
-    background-color:#fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    right: -60px;
+    right: -85px;
     img {
-        width: 30px;
-        height: 30px;
+        width: 45px;
+        height: 45px;
         @include breakpoint("max-sm") {
             width: 20px;
             height: 20px;
@@ -259,5 +291,75 @@
     @include breakpoint("max-sm") {
         display: block;
 
+    }
+}
+.modal-body-video .modal-grid .modal-grid-items:nth-child(2) {
+    overflow: auto !important;
+    height: 500px;
+    overflow-x: hidden !important;
+}
+
+@media (min-width:768px) and (max-width:1500px) {
+    .modal-body-video {
+        width: 97%;
+    }
+    .modal-body-video .modal-grid .modal-grid-items:nth-child(2) {
+        overflow: auto !important;
+        height: 500px;
+        overflow-x: hidden !important;
+    }
+
+}
+.modal-body-video{
+    .next-button-alignment {
+        z-index: 99999;
+    }
+}
+
+
+.box-grid-black {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text-style {
+        position: relative;
+        p {
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 22px;
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+}
+.box-grid-items:hover .box-grid-black {
+    transform: translateY(0%);
+}
+.modal-grid .modal-grid-items .modal-main-img {
+    @include breakpoint("max-sm") {
+        height: 280px;
+    }
+}
+.mobile-view-close {
+    @include breakpoint("max-sm") {
+        right: 0;
+    }
+}
+.modal-grid .modal-grid-items .modal-main-img video {
+    @include breakpoint("max-sm") {
+        height: 280px;
     }
 }

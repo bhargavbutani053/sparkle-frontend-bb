@@ -189,12 +189,7 @@ export default function SparkleStory() {
             })
             isValid = false
         }
-        if (!formValues?.lastname || formValues?.lastname === "" || !nameRegx.test(formValues?.lastname)) {
-            setFormError((prevValue) => {
-                return { ...prevValue, lastname: "Please Enter Your Last Name Properly" }
-            })
-            isValid = false
-        }
+     
         if (formValues?.email && !formValues?.email?.match(emailRegEx)) {
             setFormError((prevValue) => {
                 return { ...prevValue, email: "Please Enter Valid Email" }
@@ -352,7 +347,7 @@ export default function SparkleStory() {
                                     </div>
 
                                     <div className="form-grid-items">
-                                        <label htmlFor="lastname">Last Name <span className="required">*</span></label>
+                                        <label htmlFor="lastname">Last Name</label>
                                         <input
                                             type="text"
                                             name="lastname"
@@ -363,11 +358,7 @@ export default function SparkleStory() {
                                             maxLength="30"
                                             onInput={(e) => maxLengthCheck(e)}
                                         />
-                                        <p className="error-msg">
-                                            {formError?.lastname
-                                                && formError?.lastname !== ""
-                                                && formError?.lastname}
-                                        </p>
+                                       
                                     </div>
                                 </div>
 

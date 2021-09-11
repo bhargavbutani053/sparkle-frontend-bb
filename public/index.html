@@ -9,8 +9,25 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-WXS9MNFVL4"
+    ></script>
+    <script>
+      require("dotenv").config();
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", `${process.env.REACT_APP_GOOGLEID}`); // add this id into .env file
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -26,6 +43,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Sparkling Ice - Flavored Sparkling Water</title>
+    <script id="react-dotenv" src="./env.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
