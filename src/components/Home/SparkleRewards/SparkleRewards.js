@@ -1,6 +1,6 @@
 import React from 'react'
 import './SparkleRewards.scss';
-import productImage from '../../../Assets/Images/product.png';
+import productImage from '../../../Assets/Images/full-img-4.png';
 export default function SparkleRewards() {
     return (
         <>
@@ -8,7 +8,7 @@ export default function SparkleRewards() {
                 <div className="container">
                     <div className="reward-text">
                         <h2>GET MORE WITH </h2>
-                        <h1>SPARKLING ICE®<br/> REWARDS</h1>
+                        <h1>SPARKLING ICE<span>®</span><br/> REWARDS</h1>
                         <div className="join-now-button">
                            <a href="https://bit.ly/SIRewards" target="_blank"><button className="join">JOIN NOW</button></a>
                         </div>

@@ -13,7 +13,7 @@ function App() {
         {/* <Header /> */}
         <ToastContainer />
         <Route exact path="/" component={Home} />
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );

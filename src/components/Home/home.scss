@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    margin-top: -2px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -17,42 +18,70 @@
         padding: 80px 0;
     }
 }
+.text-img-align {
+    
+    img {
+        width:600px;
+    }
+}
+
+.text-img-align-span{
+    display: flex;
+    flex-direction: column;
+    width : 50%;
+    padding-top: -100px;
+    @include breakpoint("max-sm") {
+        width: 100%;
+        margin-top:1rem;
+    }
+}
 .banner-text {
     h1 {
+        
         color: $white;
-        @include heading-large;
+        @include heading-1;
         text-align: center;
+        font-weight: 800 !important;
+        font-size: 73px;
         margin-bottom: 0;
         @include breakpoint("max-sm") {
-            @include heading-1;
-            line-height: 60px;
+            @include heading-3;
+            line-height: 40px;
         }
     }
     p {
-        @include heading-2;
+        @include text;
         color: $white;
-        line-height: 46px;
-        font-weight: 600;
+        font-weight: 400;
         margin-bottom: 40px;
         text-align: center;
         @include breakpoint("max-sm") {
             @include heading-4;
+            margin-bottom: 1.25rem;
         }
     }
     span {
-        @include heading-3;
+        @include heading-4;
+        line-height: 30px;
         color: $white;
         font-weight: 400;
         text-align: center;
         display: block;
+        @include breakpoint("max-sm") {
+            @include text-sm;
+        }
+        span:nth-child(2) {
+            padding-top: 1rem;
+        }
     }
     .text-img-align {
         display: flex;
         justify-content: center;
-        margin-top: -2rem;
-        margin-bottom: 40px;
+        margin-top: -1.25rem;
+        margin-bottom: 20px;
         @include breakpoint("max-sm") {
-            margin-top: 0rem;
+            margin-top: -1rem;
+            margin-bottom: 10px;
         }
     }
 }

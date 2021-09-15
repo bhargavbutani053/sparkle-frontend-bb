@@ -3,41 +3,49 @@
 @import "../../../styles/mixins/typography.scss";
 
 .sparkle-story-banner {
+    .container{
+        margin-top: 55px;
+
+    }
     background-color: $green;
     padding: 120px 0;
     @include breakpoint("max-sm") {
-        padding: 80px 0;
+        padding: 40px 0;
     }
     .sparkle-text {
         h1 {
-            @include heading-large;
+            @include heading-1;
             text-align: center;
             color: $white;
+            line-height:60px;
+            font-weight: 800 !important;
             margin-bottom: 1.85rem;
             @include breakpoint("max-sm") {
                 @include heading-2;
+                margin-bottom: 0;
             }
         }
         p {
-            @include heading-2;
+            @include text-md;
             color: $white;
-            line-height: 46px;
             font-weight: 400;
-            margin-bottom: 40px;
+            // margin-bottom: 40px;
             margin: 0;
             text-align: center;
             @include breakpoint("max-sm") {
                 @include text-md;
+                margin-top:1.25rem;
             }
         }
     }
     .grid {
         display: grid;
-        margin-top: 120px;
+        margin-top: 60px;
         grid-template-columns: repeat(1, 1fr);
         gap: 0;
+        width: 78%;
         @include breakpoint("max-sm") {
-            margin-top: 60px;
+            margin-top: 40px;
         }
         .grid-items {
             .form-box {
@@ -73,9 +81,10 @@
                         width: 100%;
                         padding: 1rem 0.75rem;
                         display: block;
+                        color: #323232;
                         border: none;
                         height: 230px;
-                        @include text-md;
+                        @include text;
                         @include breakpoint("max-sm") {
                             height: 80px;
                             @include text-bold;
@@ -85,11 +94,14 @@
                             border: none;
                         }
                     }
+                    ::placeholder {
+                        color: #b2b2b2 !important;
+                    }
                     label {
                         display: block;
                         @include heading-3;
                         font-weight: 400;
-                        font-size: 22px;
+                        font-size: 16px;
                         position: relative;
                         margin: 0;
                         margin-bottom: 15px;
@@ -116,10 +128,11 @@
                             display: block;
                             @include heading-3;
                             font-weight: 400;
-                            font-size: 22px;
+                            font-size: 16px;
+                            color: #323232;
                             position: relative;
                             margin: 0;
-                            margin-bottom: 15px;
+                            margin-bottom: 10px;
                             @include breakpoint("max-sm") {
                                 @include text-bold;
                                 margin-bottom: 10px;
@@ -132,16 +145,18 @@
                             padding: 0.375rem 0.75rem;
                             display: block;
                             border: none;
-                            @include text-md;
+                            @include text;
                             @include breakpoint("max-sm") {
                                 height: 40px;
-                                @include text-bold;
+                                @include text;
                             }
                             &:focus {
                                 border: none;
                                 outline: none;
                             }
+              
                         }
+                        
                         select {
                             background-color: $dark;
                             height: 60px;
@@ -149,7 +164,8 @@
                             padding: 0.375rem 0.75rem;
                             display: block;
                             border: none;
-                            @include text-md;
+                            @include text;
+                            font-weight: 400;
                             @include breakpoint("max-sm") {
                                 height: 50px;
                             }
@@ -178,7 +194,7 @@
                     p {
                         color: $black;
                         @include heading-4;
-                        font-size: 20px;
+                        font-size: 16px;
                         text-align: center;
                         font-weight: 400;
                         @include breakpoint("max-sm") {
@@ -198,9 +214,11 @@
                     }
                 }
                 .terms-conditions {
-                    margin-bottom: 40px;
+                    margin-bottom: 10px;
                     margin-top: 2rem;
                     text-align: center;
+                    display: flex;
+                    justify-content: center;
 
                     div {
                         display: flex;
@@ -211,17 +229,20 @@
                         }
 
                         input[type="checkbox"] {
-                            width: 30px;
-                            height: 30px;
+                            width: 20px;
+                            margin: 0;
+                            height: 20px;
                             border: 1px solid $black;
                             @include breakpoint("max-sm") {
-                                width: 60px;
-                                height: 60px;   
+                                width: 20px;
+                                height: 20px;   
                             }
                         }
                         label {
                             @include text-md;
-                            font-size: 20px;
+                            font-size: 16px;
+                            display: block;
+                           
                             padding-left: 1.25rem;
                             @include breakpoint("max-sm") {
                                 @include text-sm;
@@ -232,7 +253,9 @@
                             @include text-sm;
                             font-size: 12px;
                             text-align: left;
+                            padding-left: 10px;
                             padding-left: .5rem;
+
                            }
                         }
                         span {
@@ -247,16 +270,19 @@
                     button {
                         padding: 8px 15px;
                         background-color: $blue;
-                        @include heading-3;
+                        @include heading-4;
+                        font-size: 18px;
                         color: $white;
-                        min-width: 250px;
-                        height: 70px;
+                        min-width: 190px;
+                        height: 50px;
+                        letter-spacing: 3px;
+                        font-weight: 600;
                         border: none;
                         border-radius: 999px;
                         @include breakpoint("max-sm") {
                             height: 50px;
                             @include text-md;
-                            font-weight: 600gallery-img-align;
+                            font-weight: 600;
                         }
                     }
                 }
@@ -268,22 +294,80 @@
 
 .final-register-box {
     background-color: #fff;
-    padding: 360px 121px 360px 121px;
+    padding: 160px 80px;
     width: 100%;
     border-radius: 50px;
+    @include breakpoint("max-md") {
+        padding: 50px;
+    }
+    @include breakpoint("max-sm") {
+        padding: 25px;
+        border-radius: 6px;
+    }
     .text-style {
         h1 {
-            @include heading-large;
+            //@include heading-large;
             color: #00BCDF;
             margin-bottom: 1.25rem;
+            font-family: 'montserrat';
             text-align: center;
+            font-size : 40px;
+            @include breakpoint("max-md") {
+                @include heading-2;
+                line-height: 45px
+            }
+            @include breakpoint("max-sm") {
+                @include heading-3;
+            }
+        }
+        .child-text-align {
+            margin-top: 50px;
+            p {
+                font-size: 16px;
+                color: #323232;
+                font-weight: 400;
+            }
+        }
+        .join-button {
+            display: flex;
+            justify-content: center ;
+            margin-top: 40px;
+            
+            button {
+                padding: 8px 15px;
+                background-color: $yellow;
+                cursor: pointer;
+                @include heading-4;
+                font-size: 18px;
+                color: $white;
+                min-width: 190px;
+                height: 50px;
+                letter-spacing: 3px;
+                font-weight: 600;
+                border: none;
+                border-radius: 999px;
+                @include breakpoint("max-sm") {
+                    height: 50px;
+                    @include text-md;
+                    font-weight: 600;
+                }
+            }
         }
         p {
             @include heading-3;
+            font-size: 16px;
             font-weight: 400;
-            margin-bottom: 80px;
+            margin-bottom: 0;
+            font-weight: 600;
             text-align: center;
             color: #000000;
+            @include breakpoint("max-md") {
+                margin-bottom: 50px;
+            }
+            @include breakpoint("max-sm") {
+                @include text;
+                margin-bottom: 40px;
+            }
         }
         h6 {
             @include heading-3;
@@ -294,6 +378,12 @@
             font-weight: 400;
             cursor: pointer;
             transition: .3s;
+            @include breakpoint("max-md") {
+                margin-top: 1.25rem;
+            }
+            @include breakpoint("max-sm") {
+                @include text-bold;
+            }
             &:hover {
                 transform: translate(0 , -3px);
             }
@@ -324,7 +414,11 @@
         margin-top: 0;
     }
     .sparkle-story-banner .sparkle-text h1 {
-        margin-bottom: 10px;
+        margin-bottom: -20px;
+        font-size: 53px;
+    }
+    .sparkle-story-banner .sparkle-text p {
+        margin-top: 1.85rem;
     }
 }
 
@@ -341,4 +435,31 @@
 
 .checkbox{
     margin-bottom:auto;
+}
+
+.box-center-alignment {
+    display: flex;
+    justify-content: center;
+}
+.terms-grid-align {
+    max-width: 650px;
+}
+.terms-grid-align {
+    p {
+        padding-left: 10px;
+        text-align: left;
+    }
+}
+.message-center-align {
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+@include breakpoint("max-sm") {
+.sparkle-reward-banner .reward-text span {
+    font-size: 25px !important;
+    position: relative;
+    top: -6px !important;
+    left: 5px !important;
+}
 }

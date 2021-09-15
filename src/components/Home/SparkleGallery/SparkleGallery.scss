@@ -10,9 +10,12 @@
         justify-content: center;
         margin-bottom: 50px;
         img {
-            height: 100px;
+            margin-top: 40px;
+            height: 170px;
+            width: 550px;
             @include breakpoint("max-sm") {
-                height: 100px;
+                height: 105px;
+                width: 100%;
             }
         }
     }
@@ -62,9 +65,9 @@
         margin: 30px 0;
     }
     .pagination-button {
-        width: 30px;
+        width: 20px;
         margin-right: 40px;
-        height: 30px;
+        height: 20px;
         background-color: #d04389;
         border-radius: 50%;
         @include breakpoint("max-sm") {
@@ -83,11 +86,11 @@
 .share-story p {
     color: $white;
     @include heading-2;
-    font-weight: 400;
     text-decoration: underline;
     text-align: center;
+    font-weight: 400;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 20px;
     @include breakpoint("max-sm") {
         @include text-md;
     }
@@ -191,14 +194,15 @@
                 padding: 15px;
             }
             p {
-                word-break: break-all;
+                word-break: word-break;
                 margin-bottom: 2rem;
-                font-weight: 600 !important;
                 color: #593561;
                 @include text-md;
                 @include breakpoint("max-sm") {
                     @include text;
                 }
+                font-family: 'montserrat', sans-serif;
+                font-weight: 410;
             }
 
         }
@@ -250,11 +254,16 @@
         @include breakpoint("max-sm") {
             width: 20px;
             height: 20px;
+            margin-left: -6px;
         }
     }
     @include breakpoint("max-sm") {
         width: 40px;
         height: 40px;
+        background: #662e67;
+        box-shadow: 0 0 15px #00000078;
+        left: 0;
+        z-index: 999999;
     }
 }
 .next-button-alignment {
@@ -279,6 +288,9 @@
         width: 40px;
         height: 40px;
         right: -35px;
+        background: #662e67;
+        box-shadow: 0 0 15px #00000078;
+        z-index: 999999;
     }
 }
 
@@ -356,10 +368,103 @@
 .mobile-view-close {
     @include breakpoint("max-sm") {
         right: 0;
+        z-index: 99999999;
     }
 }
 .modal-grid .modal-grid-items .modal-main-img video {
     @include breakpoint("max-sm") {
         height: 280px;
+    }
+}
+
+.image-no-show-class {
+    display: none !important;
+}
+
+.text-modal-grid {
+    // height: 600px;
+    background-color: #fff;
+    position: relative;
+    padding: 50px;
+    @include breakpoint("max-sm") {
+        padding: 30px 15px;
+    }
+}
+.text-modal-width {
+    width: 100%;
+    @include breakpoint("max-sm") {
+        width: auto;
+    }
+}
+.text-logo-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+    @include breakpoint("max-sm") {
+        margin-bottom: 40px;
+    }
+    img {
+        width: 300px;
+        @include breakpoint("max-sm") {
+            width: 150px;
+        }
+    }
+}
+.text-modal-body {
+    margin-top: 3rem;
+    @include breakpoint("max-sm") {
+        margin-top: 2rem;
+    }
+    p {
+        @include text-md;
+        color: #593561;
+        text-align: center;
+        margin-bottom: 1.85rem;
+        @include breakpoint("max-sm") {
+            @include text;
+        }
+    }
+}
+
+.mobile-view-close1 {
+    position: fixed;
+    right: 40px;
+    font-weight: bold;
+    margin-top: 5px;
+    z-index: 99999999;
+    cursor: pointer;
+    @include breakpoint("max-sm") {
+        right: 0;
+        margin-top: -1.25rem;
+    }
+}
+
+@media (min-width:768px) and (max-width:1440px) {
+    .modal-body {
+        height: 550px;
+    }
+    .modal-grid .modal-grid-items .modal-main-img {
+        height: 550px;
+    }
+    .modal-grid .modal-grid-items .modal-main-img img {
+        height: 550px;
+    }
+}
+
+
+.storycenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sparkle-img-center {
+    img {
+        width: 350px;
+    }
+}
+@include breakpoint("max-sm") {
+    .sparkle-story-banner .grid {
+        width: 100%;
     }
 }

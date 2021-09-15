@@ -5,6 +5,9 @@
 footer {
     background-color: $dark-black;
     padding: 120px 0 40px 0;
+    @include breakpoint("max-sm") {
+        padding: 60px 0 40px 0;
+    }
     .footer-grid {
         display: grid;
         grid-template-columns: 210px 210px 210px;
@@ -14,6 +17,7 @@ footer {
         }
         @include breakpoint("max-sm") {
             grid-template-columns: repeat(1 , 1fr);
+            gap: 30px;
         }
         .footer-grid-items {
             nav {
@@ -24,6 +28,9 @@ footer {
                         color: $white;
                         text-decoration: none;
                         padding-bottom: .8rem;
+                        @include breakpoint("max-sm") {
+                            @include text-bold;
+                        }
                     }
                 }
             }
@@ -35,6 +42,10 @@ footer {
     p {
         @include text-md;
         color: $white;
+        @include breakpoint("max-sm") {
+            @include text-sm;
+            line-height: 28px;
+        }
     }
     span {
         font-weight: 600;

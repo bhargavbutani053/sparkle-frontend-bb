@@ -6,23 +6,40 @@
 .sparkle-reward-banner {
     background-color: $blue;
     padding: 120px 0 0 0;
+    // height: 735px;
+    height: 818px;
+    position: relative;
     @include breakpoint("max-sm") {
         padding: 80px 0 0 0;
+        height:470px;
     }
     .reward-text {
         h2 {
-            @include heading-1;
+            font-family: 'montserrat';
             color: $white;
             text-align: center;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: 0;
             margin: 0;
             @include breakpoint("max-sm") {
-                @include heading-3;
+                @include heading-2;
             }
         }
+        span {
+            font-size: 40px;
+            position: relative;
+            top: -19px;
+        }
         h1 {
-            @include heading-large;
+            
+            @include heading-1;
+            letter-spacing: 0;
+            font-size: 4rem;
+            margin-top: 0 !important;
+            font-weight: 800;
             color: $white;
-            margin-top: .5rem;
+            margin-top: 0.5rem;
             text-align: center;
             margin-bottom: 50px;
             @include breakpoint("max-sm") {
@@ -41,24 +58,31 @@
                 padding: 8px 15px;
                 background-color: $yellow;
                 @include heading-3;
+                font-size: 18px;
+                font-weight: 600 !important;
                 color: $white;
-                min-width: 250px;
-                height: 70px;
+                letter-spacing: 2px;
+                min-width: 190px;
+                height: 50px;
                 border:none;
                 border-radius: 999px;
                 @include breakpoint("max-sm") {
                     min-width: 190px;
                     height: 50px;
+
                     @include text-md;
                 }
-
+                font-weight: 100;
             }
         }
     }
 }
 .product-img {
+    
     img {
         width: 100%;
+        position: absolute;
+        bottom: 0;
     }
 }
 
@@ -66,4 +90,21 @@
 
 .join{
     cursor: pointer;
+    font-weight: 100;
+}
+
+.text-modal-width-full {
+    width: 100%;
+    @include breakpoint("max-sm") {
+        width: auto;
+    }
+}
+.text-modal-grid-full {
+    display: grid;
+    grid-template-columns: repeat(1 , 1fr);
+    gap: 0;
+    padding:50px;
+    @include breakpoint("max-sm") {
+        padding: 15px;
+    }
 }

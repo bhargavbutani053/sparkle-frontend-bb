@@ -1,7 +1,7 @@
 @use '../mixins/breakpoint.scss';
 
 @mixin heading-large {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold', sans-serif;
   font-size: 4.5rem;
   font-weight: 600;
   line-height: 1.1;
@@ -9,7 +9,7 @@
 }
 
 @mixin heading-1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat';
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.1;
@@ -17,21 +17,21 @@
 }
 
 @mixin heading-2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold',sans-serif;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.1;
 }
 
 @mixin heading-3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'montserrat';
+  font-size: 2.5rem;
   font-weight: 600;
   line-height: 1.5;
 }
 
 @mixin heading-4 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5;
@@ -39,7 +39,7 @@
 }
 
 @mixin heading-5 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
@@ -47,7 +47,7 @@
 }
 
 @mixin heading-5-bold {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
@@ -55,7 +55,7 @@
 }
 
 @mixin heading-6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'montserrat-extrabold', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
@@ -63,7 +63,7 @@
 }
 
 @mixin text-md {
- font-family: 'Montserrat', sans-serif;
+ font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5;
@@ -71,7 +71,7 @@
 }
 
 @mixin text {
- font-family: 'Montserrat', sans-serif;
+ font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -79,7 +79,7 @@
 }
 
 @mixin text-bold {
- font-family: 'Montserrat', sans-serif;
+ font-family: 'montserrat-extrabold', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
@@ -87,7 +87,7 @@
 }
 
 @mixin text-sm {
- font-family: 'Montserrat', sans-serif;
+ font-family: 'montserrat-extrabold', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
@@ -95,7 +95,7 @@
 }
 
 @mixin text-sm-bold {
- font-family: 'Montserrat', sans-serif;
+ font-family: 'montserrat-extrabold', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;

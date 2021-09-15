@@ -48,6 +48,10 @@
     ]
   },
   "react-dotenv": {
-    "whitelist": ["REACT_APP_GOOGLEID", "REACT_APP_SERVER_PROTO", "REACT_APP_SERVER_HOST"]
+    "whitelist": [
+      "REACT_APP_GOOGLEID",
+      "REACT_APP_SERVER_PROTO",
+      "REACT_APP_SERVER_HOST"
+    ]
   }
 }
