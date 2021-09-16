@@ -10,7 +10,7 @@ export default function Home() {
             <div className="home-banner">
                 <div className="container">
                     <div className="banner-text">
-                        <h1>SHARE YOUR</h1>
+                        {/* <h1>SHARE YOUR</h1> */}
                         <div className="text-img-align">
                             <img src={TextImage} alt="TextImage" />
                         </div>

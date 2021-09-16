@@ -11,8 +11,12 @@ import Posterimg from "../../../Assets/Images/TR_SI_Cube-Thumbnails-CP-1.png";
 import ReactTooltip from "react-tooltip";
 import posterimg from "../../../Assets/Images/TR_SI_Cube-Thumbnails-CP-1.png";
 
+
+
+
+
 export default function SparkleGallery() {
-  const wrapperRef = useRef(null);
+
   const [images, setImages] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [len, setLen] = useState();
@@ -44,6 +48,31 @@ export default function SparkleGallery() {
     "https://7cmg-objects.s3.us-east-2.amazonaws.com/story/assets/TR_SI_Cube-Thumbnails-LMN-1.png",
   ]);
 
+
+const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+        /**
+         * Alert if clicked on outside of element
+         */
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+               setIsModalOpen(false);
+               document.body.classList.remove("body-overflow");
+            }
+        }
+  
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+  }
+
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
   const getImages = async (i) => {
     await ApiGet(`story/getstory?page=${i || 1}`)
       .then((res) => {
@@ -160,6 +189,7 @@ export default function SparkleGallery() {
 
   return (
     <div>
+      <div className={isModalOpen && `opacity-modal`}></div>
       {isModalOpen && (
         <div className="modal">
           <div className={`modal-relative ${images[curIndex]?.type === "defaultImage" && "text-modal-width-full"}`}>
@@ -256,91 +286,6 @@ export default function SparkleGallery() {
                         : images[curIndex]?.lastname}
                     </p>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* video modal */}
-      {isvideoopen && (
-        <div className="modal-video">
-          <div className="modal-body-video" ref={wrapperRef}>
-            <div className="modal-relative">
-              {curIndex !== 0 && (
-                <div
-                  className="next-button-alignment-top"
-                  onClick={() => handlePrev()}
-                >
-                  <img
-                    src={require("../../../Assets/Images/Left.png").default}
-                  />
-                </div>
-              )}
-              {curIndex !== images.length - 1 && (
-                <div
-                  className="next-button-alignment"
-                  onClick={() => handleNext()}
-                >
-                  <img
-                    src={require("../../../Assets/Images/Right.png").default}
-                  />{" "}
-                </div>
-              )}
-              <div className="modal-grid">
-                <div className="modal-grid-items">
-                  <div
-                    className="mobile-view-close"
-                    onClick={() => handclose()}
-                  >
-                    <span>X</span>
-                  </div>
-                  <div className="modal-main-img">
-                    {images && images[curIndex]?.image.includes() ? (
-                      <></>
-                    ) : (
-                      // <img src={images[curIndex]?.image} alt="ModalImages" />
-                      <video
-                        src={images[curIndex]?.image}
-                        poster={Posterimg}
-                        alt="ModalVideo"
-                        height="500px"
-                        wdith="300px"
-                        controls
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div className="modal-grid-items">
-                  <div
-                    
-                    className={`${images[curIndex]?.type === "defaultImage" ? ("close-icon-add") : ("close-icon-addone")}`}
-
-                    onClick={() => handleModalClose()}
-                  >
-                    <p>X</p>
-                  </div>
-
-                  <div className="modal-text-style">
-                    <div className="sparkle-img-center">
-                      <img
-                        src={GalleryPurple}
-                        alt="GalleryText"
-                        style={{ marginBottom: "10px", height: "55px" }}
-                      />
-                    </div>
-                    <p style={{ marginTop: "10px" }}>
-                      {images[curIndex]?.story}
-                    </p>
-                    <p>
-                      { images[curIndex]?.firstname + " "}
-                      {images[curIndex]?.lastname === "null"
-                        ? ""
-                        :  images[curIndex]?.lastname}
-                    </p>
                   </div>
                 </div>
               </div>
@@ -457,55 +402,6 @@ export default function SparkleGallery() {
         </div>
       </div>
 
-      {/* No image */}
-      {newinsta && (
-        <div className="modal">
-          <div className="modal-relative text-modal-width">
-            {newinsta && (
-              <div className="modal-body">
-                {curIndex !== 0 && (
-                  <div
-                    className="next-button-alignment-top"
-                    onClick={() => handlePrev()}
-                  >
-                    <img
-                      src={require("../../../Assets/Images/Left.png").default}
-                    />
-                  </div>
-                )}
-
-                {curIndex !== images.length - 1 && (
-                  <div
-                    className="next-button-alignment"
-                    onClick={() => handleNext()}
-                  >
-                    <img
-                      src={require("../../../Assets/Images/Right.png").default}
-                    />{" "}
-                  </div>
-                )}
-
-                <div className="text-modal-grid">
-                  <div
-                    className="mobile-view-close1"
-                    onClick={() => handleModalClose()}
-                  >
-                    <span>X</span>
-                  </div>
-                  <div className="text-logo-center">
-                    <img src={GalleryPurple} alt="GalleryText" />
-                  </div>
-                  <div className="text-modal-body">
-                    <p style={{ marginTop: "10px" }}>
-                      {images[curIndex]?.story}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

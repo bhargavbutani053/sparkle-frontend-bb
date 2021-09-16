@@ -355,7 +355,7 @@
 
 .box-grid-black {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 4px);
     background-color: rgba(0,0,0,0.5);
     content: "";
     position: absolute;
@@ -502,4 +502,13 @@
     @include breakpoint(max-sm) {
         text-align: left;
     }
+}
+.opacity-modal {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 50%;
 }

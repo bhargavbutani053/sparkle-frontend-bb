@@ -334,15 +334,34 @@
                 line-height: 45px
             }
             @include breakpoint("max-sm") {
-                @include heading-3;
+                @include text-md;
+                font-weight: 600 !important;
+                line-height: 30px;
+            }
+            br {
+                @include breakpoint("max-sm") {
+                    display: none;
+                }
             }
         }
         .child-text-align {
             margin-top: 50px;
+            @include breakpoint("max-sm") {
+                margin-top: 30px;
+            }
             p {
                 font-size: 16px;
                 color: #323232;
                 font-weight: 400;
+                @include breakpoint("max-sm") {
+                    @include text-sm;
+                    line-height:25px;
+                }
+                br {
+                    @include breakpoint("max-sm") {
+                        display: none;
+                    }
+                }
             }
         }
         .join-button {
@@ -383,8 +402,8 @@
                 margin-bottom: 0px;
             }
             @include breakpoint("max-sm") {
-                @include text;
-                margin-bottom: 2px;
+                @include text-sm;
+                margin-bottom: 10px;
             }
         }
         h6 {

@@ -1,6 +1,6 @@
 import React from 'react'
 import './SparkleRewards.scss';
-import productImage from '../../../Assets/Images/full-img-4.png';
+import productImage from '../../../Assets/Images/full-img-5.png';
 export default function SparkleRewards() {
     return (
         <>
