@@ -28,8 +28,12 @@
 .text-img-align-span{
     display: flex;
     flex-direction: column;
-    width : 50%;
+    width : 64%;
     padding-top: -100px;
+    @include breakpoint("max-md") {
+        width: 100%;
+        margin-top: 1.25rem;
+    }
     @include breakpoint("max-sm") {
         width: 100%;
         margin-top:1rem;
@@ -47,6 +51,7 @@
         @include breakpoint("max-sm") {
             @include heading-3;
             line-height: 40px;
+            font-size: 43px
         }
     }
     p {
@@ -69,6 +74,7 @@
         display: block;
         @include breakpoint("max-sm") {
             @include text-sm;
+            font-size: 13px;
         }
         span:nth-child(2) {
             padding-top: 1rem;

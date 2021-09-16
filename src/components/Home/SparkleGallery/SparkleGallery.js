@@ -226,7 +226,8 @@ export default function SparkleGallery() {
 
                 <div className="modal-grid-items">
                   <div
-                    className="close-icon-add"
+                   
+                    className = {`${images[curIndex]?.type === "defaultImage" ? ("close-icon-addone") : ("close-icon-add")}`}
                     onClick={() => handleModalClose()}
                   >
                     <p className = {`${images[curIndex]?.type === "defaultImage" &&"clonebutton"}`} >X</p>
@@ -249,7 +250,7 @@ export default function SparkleGallery() {
 
                     <div className={`${images[curIndex]?.type === "defaultImage" &&"text-modal-body"}`}>
                     <p>
-                      {images[curIndex]?.firstname + " "}
+                      {"- " + images[curIndex]?.firstname + " "}
                       {images[curIndex]?.lastname === "null"
                         ? ""
                         : images[curIndex]?.lastname}
@@ -315,7 +316,9 @@ export default function SparkleGallery() {
 
                 <div className="modal-grid-items">
                   <div
-                    className="close-icon-add"
+                    
+                    className={`${images[curIndex]?.type === "defaultImage" ? ("close-icon-add") : ("close-icon-addone")}`}
+
                     onClick={() => handleModalClose()}
                   >
                     <p>X</p>
@@ -333,10 +336,10 @@ export default function SparkleGallery() {
                       {images[curIndex]?.story}
                     </p>
                     <p>
-                      {images[curIndex]?.firstname + " "}
+                      { images[curIndex]?.firstname + " "}
                       {images[curIndex]?.lastname === "null"
                         ? ""
-                        : images[curIndex]?.lastname}
+                        :  images[curIndex]?.lastname}
                     </p>
                   </div>
                 </div>

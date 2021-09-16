@@ -104,7 +104,7 @@ export default function SparkleStory() {
       }
     }
 
-    const handleFileUpload = (e) => {
+    const   handleFileUpload = (e) => {
         e.preventDefault()
         let file = e.target?.files
             ? e.target?.files[0]
@@ -214,18 +214,6 @@ export default function SparkleStory() {
             })
             isValid = false
         }
-        if (
-          storyFile?.type?.includes("image")
-        ) {
-          formValues["type"] = "image";
-          isValid = true;
-        } else if(storyFile?.type?.includes("video")){
-            formValues["type"] = "video";
-            isValid = true;
-        } else {
-            formValues["type"] = "defaultImage";
-            isValid = true;
-        }
         // if (!storyFile) {
         //     setFormError((prevValue) => {
         //         return { ...prevValue, storyFile: "Please Upload Image" }
@@ -253,6 +241,18 @@ export default function SparkleStory() {
                 formData.append(i, formValues[i])
             }
             formData.append("image", storyFile)
+            if (
+                storyFile?.type?.includes("image")
+              ) {
+                formData.append("type", "image")
+                
+              } else if(storyFile?.type?.includes("video")){
+                formData.append("type", "video")
+                 
+              } else {
+                formData.append("type", "defaultImage")
+                  
+              }
 
             for (let i of formData.entries()) {
                 console.log(i[0], i[1]);
@@ -330,12 +330,12 @@ export default function SparkleStory() {
                 <div className="sparkle-text">
                     <h1>TELL US YOUR</h1><br /> <h1>SPARKLE STORY</h1>
                 </div>
-                <div className="sparkle-text">
+                <div className="sparkle-text" id="thankYou">
                     <p>Please complete the form below to share your sparkle story.</p>
                 </div>
                 <div className="box-center-alignment">
                     <div className="grid">
-                        <div className="grid-items" id="thankYou">
+                        <div className="grid-items" >
                             {
                                 showForm ?
                             (<form className="form-box" onSubmit={handleStoryFormSubmit}>

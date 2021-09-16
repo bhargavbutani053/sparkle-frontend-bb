@@ -191,10 +191,10 @@
         .modal-text-style {
             // padding-right: 3rem;
             @include breakpoint("max-sm") {
-                padding: 15px;
+                padding: 0;
             }
             p {
-                word-break: word-break;
+                word-break: word-break !important;
                 margin-bottom: 2rem;
                 color: #593561;
                 @include text-md;
@@ -218,8 +218,32 @@
     @include breakpoint("max-sm") {
         display: none;
     }
+    
+}
+.close-icon-add-with-text {
+    position: fixed;
+    top: 40px;
+    right: 25px;
+    cursor: pointer;
+    color: #d04389;
+    font-weight: bold;
+    @include breakpoint("max-sm") {
+        display: none;
+    }
 }
 
+
+.close-icon-addone {
+    position: absolute;
+    top: -31px;
+    right: 0;
+    cursor: pointer;
+    color: #d04389;
+    font-weight: bold;
+    @include breakpoint("max-sm") {
+        display: none;
+    }
+}
 // .next-btn {
 //     position: absolute;
 //     top: 25px;
@@ -387,7 +411,7 @@
     position: relative;
     padding: 50px;
     @include breakpoint("max-sm") {
-        padding: 30px 15px;
+        padding: 30px 0px;
     }
 }
 .text-modal-width {
@@ -463,8 +487,19 @@
         width: 350px;
     }
 }
+@include breakpoint("max-md") {
+    .sparkle-story-banner .grid {
+        width: 100%;
+    }
+}
 @include breakpoint("max-sm") {
     .sparkle-story-banner .grid {
         width: 100%;
+    }
+}
+.modal-grid .modal-grid-items .modal-text-style p {
+    word-break: break-word !important;
+    @include breakpoint(max-sm) {
+        text-align: left;
     }
 }
