@@ -192,15 +192,16 @@ const useOutsideAlerter = (ref) => {
       <div className={isModalOpen && `opacity-modal`}></div>
       {isModalOpen && (
         <div className="modal">
-          <div className={`modal-relative ${images[curIndex]?.type === "defaultImage" && "text-modal-width-full"}`}>
+          <div className={`modal-relative ${images[curIndex]?.type === "defaultImage" && "text-modal-width-full"}` } ref={wrapperRef}>
           {/* <div className={"modal-relative"}> */}
 
             {curIndex !== 0 && (
               <div
                 className="next-button-alignment-top"
                 onClick={() => handlePrev()}
+                
               >
-                <img src={require("../../../Assets/Images/Left.png").default} />
+                <img src={require("../../../Assets/Images/Left.png").default}  />
               </div>
             )}
 
@@ -208,13 +209,14 @@ const useOutsideAlerter = (ref) => {
               <div
                 className="next-button-alignment"
                 onClick={() => handleNext()}
+               
               >
                 <img
-                  src={require("../../../Assets/Images/Right.png").default}
+                  src={require("../../../Assets/Images/Right.png").default } 
                 />{" "}
               </div>
             )}
-            <div className="modal-body" ref={wrapperRef}>
+            <div className="modal-body">
               <div className={`modal-grid ${images[curIndex]?.type === "defaultImage" && "text-modal-grid-full"}`}>
               {/* <div className={"modal-grid"}> */}
 

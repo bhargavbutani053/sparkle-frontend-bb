@@ -337,7 +337,7 @@ export default function SparkleStory() {
                     <div className="grid">
                         <div className="grid-items" >
                             {
-                                !showForm ?
+                                showForm ?
                             (<form className="form-box" onSubmit={handleStoryFormSubmit}>
                                 <div className="form-grid">
                                     <div className="form-grid-items">
