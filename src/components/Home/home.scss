@@ -26,7 +26,6 @@
         justify-content: center;
     }
     img {
-        width:70%;
         @include breakpoint("max-sm") {
             width: 100% !important; 
         }
