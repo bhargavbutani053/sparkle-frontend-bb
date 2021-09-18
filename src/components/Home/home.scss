@@ -15,7 +15,7 @@
     height: 100vh;
     justify-content: center;
     @include breakpoint("max-sm") {
-        height: auto;
+        min-height: 100vh;
         padding: 80px 0;
     }
 }
@@ -26,12 +26,12 @@
         justify-content: center;
     }
     img {
-        width:60%;
+        width:70%;
         @include breakpoint("max-sm") {
             width: 100% !important; 
         }
         @include breakpoint("max-xs") {
-            width: 80%;
+            width: 100% !important; 
         }
     }
 }

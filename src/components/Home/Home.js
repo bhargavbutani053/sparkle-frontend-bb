@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Home/home.scss';
-import TextImage from '../../Assets/Images/final-logo.svg';
+import TextImage from '../../Assets/Images/new-sparkle-logo-align.svg';
 import SparkleStory from './SparkleStory/SparkleStory';
 import SparkleGallery from './SparkleGallery/SparkleGallery';
 import SparkleRewards from './SparkleRewards/SparkleRewards';
