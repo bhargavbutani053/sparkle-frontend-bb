@@ -93,8 +93,7 @@
     .text-img-align {
         display: flex;
         justify-content: center;
-        margin-top: 0.75rem;
-        margin-bottom: 20px;
+       
         @include breakpoint("max-md") {
             margin-top: -1rem;
             margin-bottom: 10px;
