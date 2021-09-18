@@ -27,6 +27,7 @@
             margin: 0;
             @include breakpoint("max-sm") {
                 @include heading-2;
+                font-family: 'montserrat';
             }
         }
         span {
@@ -48,6 +49,7 @@
             @include breakpoint("max-sm") {
                 @include heading-2;
                 line-height: 40px;
+                font-family: 'montserrat';
                 br {
                     display: none;
                 }

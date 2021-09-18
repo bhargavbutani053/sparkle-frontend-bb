@@ -10,7 +10,7 @@ export default function SparkleRewards() {
                         <h2>GET MORE WITH </h2>
                         <h1>SPARKLING ICE<span>®</span><br/> REWARDS</h1>
                         <div className="join-now-button">
-                           <a href="https://bit.ly/SIRewards" target="_blank"><button className="join">JOIN NOW</button></a>
+                           <a href="https://bit.ly/SIRewards" target="_blank" className="join-ga"><button className="join">JOIN NOW</button></a>
                         </div>
                     </div>
                 </div>

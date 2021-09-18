@@ -45,21 +45,20 @@ const styles = (theme) => ({
       </MuiDialogTitle>
     );
   });
-  
+
   const DialogContent = withStyles((theme) => ({
     root: {
       padding: theme.spacing(2),
     },
   }))(MuiDialogContent);
-  
+
   const DialogActions = withStyles((theme) => ({
     root: {
       margin: 0,
       padding: theme.spacing(1),
     },
   }))(MuiDialogActions);
-export default function SparkleStory() {
-
+export default function SparkleStory(props) {
     const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([])
     const [formValues, setFormValues] = useState({})
@@ -70,10 +69,11 @@ export default function SparkleStory() {
     const [show, setIsshow] = useState(false)
     const [cropper, setCropper] = useState();
     const [cropImage, setCropImage] = useState();
-    const [showForm, setShowForm] = useState(true)
 
 
     const [open, setOpen] = React.useState(false);
+
+    const [isEnabled, setIsEnabled] = useState(false)
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -81,7 +81,7 @@ export default function SparkleStory() {
     const handleClose = () => {
       setOpen(false);
     };
-  
+
 
 
     const handleInputChange = (e) => {
@@ -167,7 +167,7 @@ export default function SparkleStory() {
     }
 
     const handleTnC = (e) => {
-       
+
         setTnCCheck(e.target.checked)
         setFormError((prevValue) => {
             return { ...prevValue, tnc: "" }
@@ -175,7 +175,29 @@ export default function SparkleStory() {
         //  setOpen(false);
     }
 
-  
+    useEffect(() => {
+        // eslint-disable-next-line
+        const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+        // generate regex for not accept only numeric, only symbols or only spaces
+        const nameRegx = /^[a-zA-Z]{2,30}$/
+        if(checkIsEmpty(formValues?.firstname) || checkIsEmpty(formValues?.email) || checkIsEmpty(formValues?.story) || !tnCCheck){
+            setIsEnabled(false)
+        }else{
+            if(!formValues?.email?.match(emailRegEx) || !nameRegx.test(formValues?.firstname)){
+                setIsEnabled(false)
+            }else{
+                setIsEnabled(true)
+            }
+        }
+    },[formValues, tnCCheck])
+
+    const checkIsEmpty = (values) => {
+        if(!values || values === ""){
+            return true
+        }
+        return false
+    }
 
     const isFormValid = () => {
         let isValid = true
@@ -185,17 +207,39 @@ export default function SparkleStory() {
         // generate regex for not accept only numeric, only symbols or only spaces
         const nameRegx = /^[a-zA-Z]{2,30}$/
 
-        if (!formValues?.firstname || formValues?.firstname === "" || !nameRegx.test(formValues?.firstname)) {
+
+        if (
+            storyFile?.type?.includes("image")
+          ) {
+            formValues["type"] = "image";
+            isValid = true;
+          } else if(storyFile?.type?.includes("video")){
+              formValues["type"] = "video";
+              isValid = true;
+          } else {
+              formValues["type"] = "defaultImage";
+              isValid = true;
+          }
+
+        if (!formValues?.firstname || formValues?.firstname === "") {
             setFormError((prevValue) => {
                 return { ...prevValue, firstname: "Please enter your first name." }
             })
             isValid = false
         }
+
         if (!formValues?.lastname || formValues?.lastname === "" || !nameRegx.test(formValues?.firstname)) {
-          formValues["lastname"] = null;
+            formValues["lastname"] = null;
             isValid = true
+          }
+
+        if (formValues?.firstname && !nameRegx.test(formValues?.firstname)) {
+            setFormError((prevValue) => {
+                return { ...prevValue, firstname: "Please enter your first name." }
+            })
+            isValid = false
         }
-     
+
         if (formValues?.email && !formValues?.email?.match(emailRegEx)) {
             setFormError((prevValue) => {
                 return { ...prevValue, email: "Please enter your email address." }
@@ -210,10 +254,22 @@ export default function SparkleStory() {
         }
         if (!formValues?.story || formValues?.story === "") {
             setFormError((prevValue) => {
-                return { ...prevValue, story: "Your Sparkle Story Tell us why Sparkling Ice matters to you." }
+                return { ...prevValue, story: "Tell us why Sparkling Ice matters to you." }
             })
             isValid = false
         }
+        // if (
+        //   storyFile?.type?.includes("image")
+        // ) {
+        //   formValues["type"] = "image";
+        //   isValid = true;
+        // } else if(storyFile?.type?.includes("video")){
+        //     formValues["type"] = "video";
+        //     isValid = true;
+        // } else {
+        //     formValues["type"] = "defaultImage";
+        //     isValid = true;
+        // }
         // if (!storyFile) {
         //     setFormError((prevValue) => {
         //         return { ...prevValue, storyFile: "Please Upload Image" }
@@ -229,7 +285,7 @@ export default function SparkleStory() {
         return isValid
     }
 
-    
+
 
     const handleStoryFormSubmit = (e) => {
         e.preventDefault()
@@ -241,19 +297,6 @@ export default function SparkleStory() {
                 formData.append(i, formValues[i])
             }
             formData.append("image", storyFile)
-            if (
-                storyFile?.type?.includes("image")
-              ) {
-                formData.append("type", "image")
-                
-              } else if(storyFile?.type?.includes("video")){
-                formData.append("type", "video")
-                 
-              } else {
-                formData.append("type", "defaultImage")
-                  
-              }
-
             for (let i of formData.entries()) {
                 console.log(i[0], i[1]);
             }
@@ -261,23 +304,23 @@ export default function SparkleStory() {
             postStoryFormData(formData)
                 .then((res) => {
                     if (res.message) {
-                        toast.success(res.message, {
-                            position: "top-right",
-                            autoClose: 5000,
-                        });
+                        // toast.success(res.message, {
+                        //     position: "top-right",
+                        //     autoClose: 5000,
+                        // });
                         window.location.href = "#thankYou";
                         setFormValues({})
                         setStoryFile()
                         setTnCCheck(false)
                         setLoading(false)
-                        setShowForm(false)
+                        props.setShowForm(false)
                         setFormError();
                     }
                 }).catch((err) => {
-                    toast.error("Something Went Wrong, Please Try Again Later", {
-                        position: "top-right",
-                        autoClose: 5000,
-                    });
+                    // toast.error("Something Went Wrong, Please Try Again Later", {
+                    //     position: "top-right",
+                    //     autoClose: 5000,
+                    // });
                     setLoading(false)
                 })
         }
@@ -327,17 +370,18 @@ export default function SparkleStory() {
 
             <div className="sparkle-story-banner" id="formBar">
                 <div className="container">
-                <div className="sparkle-text">
-                    <h1>TELL US YOUR</h1><br /> <h1>SPARKLE STORY</h1>
-                </div>
+                { props.showForm && <div className="sparkle-text">
+                    <h1>TELL US YOUR</h1>
+                    <h1 className="sparkle-text-1">SPARKLE STORY</h1>
+                </div>}
                 <div className="sparkle-text" id="thankYou">
-                    <p>Please complete the form below to share your sparkle story.</p>
+                    { props.showForm && <p>Complete the form below and share a photo of yourself with your favorite Sparkling Ice products.</p>}
                 </div>
                 <div className="box-center-alignment">
                     <div className="grid">
                         <div className="grid-items" >
                             {
-                                showForm ?
+                                props.showForm ?
                             (<form className="form-box" onSubmit={handleStoryFormSubmit}>
                                 <div className="form-grid">
                                     <div className="form-grid-items">
@@ -371,7 +415,7 @@ export default function SparkleStory() {
                                             maxLength="30"
                                             onInput={(e) => maxLengthCheck(e)}
                                         />
-                                       
+
                                     </div>
                                 </div>
 
@@ -401,8 +445,7 @@ export default function SparkleStory() {
                                     <textarea
                                         id="story"
                                         name="story"
-                                        placeholder="Your Sparkle Story Tell us why Sparkling Ice matters to you.
-                                        "
+                                        placeholder="Tell us why Sparkling Ice matters to you."
                                         rows="4"
                                         cols="50"
                                         value={formValues?.story || ""}
@@ -423,7 +466,7 @@ export default function SparkleStory() {
                                     onDragOver={(e) => e.preventDefault()}
                                     className="darg-box-img"
                                 >
-                                    <p>Drag files here to upload your image, or 
+                                    <p>Drag files here to upload your image, or
                                         <span> browse</span> from your computer.
                                         <span className="file-name">{storyFile?.name}</span>
                                         <input
@@ -451,13 +494,13 @@ export default function SparkleStory() {
                                             name="tnc"
                                             checked={tnCCheck}
                                             onChange={handleTnC}
-                                           
-                                           
+
+
                                         />
                                         {/* <label htmlFor="tnc" onClick={handleClickOpen}>Please indicate that you have read and <span onClick={handleClickOpen}>agree to the Terms and Conditions.</span></label> */}
                                         <p htmlFor="tnc">I agree to the <span onClick={handleClickOpen} className="terams">Terms & Conditions,</span> and consent to my Sparkle <br/> Story and image being added to the Sparkle Gallery.</p>
                                     </div>
-                                    
+
                                 </div>
                                 <p className="error-msg message-center-align">
                                         {formError?.tnc
@@ -466,9 +509,9 @@ export default function SparkleStory() {
                                     </p>
 
                                 <div className="submit-button">
-                                    <button type="submit">SUBMIT</button>
+                                    <button className={`${isEnabled && `btn-ga-submit`}`} type="submit">SUBMIT</button>
                                 </div>
-                            </form>) 
+                            </form>)
                             : (
                                 <div id="">
                                   <div className="final-register-box">
@@ -478,12 +521,12 @@ export default function SparkleStory() {
                                             <p>Check back here soon too see it in the gallery.</p>
                                             <div className="child-text-align">
                                                 <p>
-                                                Want to get rewarded for your love of Sparkling Ice? Join<br/> Sparkling Ice Rewards to earn perks 
-                                                like a chance to win a<br/> year's supply of Sparkling Ice!  
+                                                Want to get rewarded for your love of Sparkling Ice? Join<br/> Sparkling Ice Rewards to earn perks
+                                                like a chance to win a<br/> year's supply of Sparkling Ice!
                                                 </p>
                                             </div>
                                            <div className="join-button">
-                                           <a href="https://bit.ly/SIRewards" target="_blank"><button onClick={()=> setShowForm(true)}>JOIN NOW</button></a>
+                                                <a href="https://bit.ly/SIRewards" target="_blank" className="join-ga"><button className="join">JOIN NOW</button></a>
                                             </div>
                                         </div>
                                   </div>
@@ -508,21 +551,21 @@ export default function SparkleStory() {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-          Except where prohibited by law, by submitting your “Sparkle Story” you grant to Talking Rain Beverage Company, 
+          Except where prohibited by law, by submitting your “Sparkle Story” you grant to Talking Rain Beverage Company,
           Inc. website administrator, and all of their respective partners, parent companies, divisions, subsidiaries, affiliates, trustees, franchisees, licensees, distributors, prize providers, advertising, promotion,
-           and public relations agencies and those acting pursuant to Talking Rain and administrator’s authority, the right and permission to print, publish, 
-           
+           and public relations agencies and those acting pursuant to Talking Rain and administrator’s authority, the right and permission to print, publish,
+
           </Typography>
           <Typography gutterBottom>
           broadcast, and use, worldwide, in any media now known or hereafter developed,
             including but not limited to the world wide web, at any time or times, your Sparkle Story,
-             in whole or in part, the name or personal identifying information you provide with your submission, 
-            
+             in whole or in part, the name or personal identifying information you provide with your submission,
+
           </Typography>
           <Typography gutterBottom>
           which may include pictures, voice, likeness, and biographical information (the “Submission”) for advertising, trade, and promotional purposes without consideration, compensation, permission, or further notification.
-              You agree that Talking Rain shall own the Submission, which will not be acknowledged or returned, and that Talking Rain and its designees shall have the perpetual, 
-              worldwide right to edit, publish, and use the Submission in any way and in any media for trade, advertising, promotional, and/or other purposes as Talking Rain and/or its designees may determine. 
+              You agree that Talking Rain shall own the Submission, which will not be acknowledged or returned, and that Talking Rain and its designees shall have the perpetual,
+              worldwide right to edit, publish, and use the Submission in any way and in any media for trade, advertising, promotional, and/or other purposes as Talking Rain and/or its designees may determine.
           </Typography>
         </DialogContent>
         <DialogActions>

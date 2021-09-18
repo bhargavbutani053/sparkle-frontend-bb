@@ -113,6 +113,16 @@
     left: 50%;
     transform: translateX(-50%);
     // background-color: rgba(0,0,0,0.3);
+    @include breakpoint("max-md") {
+        width:80%;
+    }
+}
+@include breakpoint("max-md") {
+    .modal-grid .modal-grid-items:nth-child(2){
+        overflow: auto;
+        height: 550px;
+        padding: 40px 30px !important;
+    }
 }
 .modal-video {
     width: 100%;
@@ -157,6 +167,9 @@
     max-height: 600px;
     justify-content: space-between;
     gap: 0 0px;
+    @include breakpoint("max-md") {
+        grid-template-columns: repeat(2 , 1fr);
+    }
     @include breakpoint("max-sm") {
         grid-template-columns: repeat(1 , 1fr);
     }
@@ -510,5 +523,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    opacity: 50%;
+    opacity: 77%;
+    z-index: 99;
 }

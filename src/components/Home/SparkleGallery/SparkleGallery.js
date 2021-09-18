@@ -15,8 +15,7 @@ import posterimg from "../../../Assets/Images/TR_SI_Cube-Thumbnails-CP-1.png";
 
 
 
-export default function SparkleGallery() {
-
+export default function SparkleGallery(props) {
   const [images, setImages] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [len, setLen] = useState();
@@ -262,7 +261,7 @@ const useOutsideAlerter = (ref) => {
                     className = {`${images[curIndex]?.type === "defaultImage" ? ("close-icon-addone") : ("close-icon-add")}`}
                     onClick={() => handleModalClose()}
                   >
-                    <p className = {`${images[curIndex]?.type === "defaultImage" &&"clonebutton"}`} >X</p>
+                    <p id="close-icon-id" className = {`${images[curIndex]?.type === "defaultImage" &&"clonebutton"}`} >X</p>
                   </div>
 
                   <div className="modal-text-style">
@@ -397,7 +396,7 @@ const useOutsideAlerter = (ref) => {
             })()}
           </div>
           <div className="share-story">
-            <a href="#formBar">
+            <a href="#formBar" onClick={()=> props.setShowForm(true)} >
               <p>Share Your Sparkle Story</p>
             </a>
           </div>
